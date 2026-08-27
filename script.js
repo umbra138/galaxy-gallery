@@ -68,16 +68,20 @@ var tunnelProgress = 0;
 var galleryAlpha = 0;
 
 // ========== LIGHTS ==========
-var ambientLight = new THREE.AmbientLight(0x332244, 0.6);
+var ambientLight = new THREE.AmbientLight(0x665577, 1.2);
 scene.add(ambientLight);
 
-var dirLight = new THREE.DirectionalLight(0xffddee, 0.8);
+var dirLight = new THREE.DirectionalLight(0xffeedd, 1.2);
 dirLight.position.set(5, 10, 7);
 scene.add(dirLight);
 
-var pointLight = new THREE.PointLight(0xff88cc, 0.6, 100);
-pointLight.position.set(0, 2, 5);
+var pointLight = new THREE.PointLight(0xffaadd, 1.0, 150);
+pointLight.position.set(0, 2, 10);
 scene.add(pointLight);
+
+var pointLight2 = new THREE.PointLight(0xaaddff, 0.5, 200);
+pointLight2.position.set(-10, -5, 15);
+scene.add(pointLight2);
 
 // ========== STARFIELD ==========
 function createStarfield() {
@@ -100,7 +104,7 @@ function createStarfield() {
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
   geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-  var mat = new THREE.PointsMaterial({ size: 1.5, vertexColors: true, transparent: true, opacity: 0.8, sizeAttenuation: true });
+  var mat = new THREE.PointsMaterial({ size: 2.5, vertexColors: true, transparent: true, opacity: 1.0, sizeAttenuation: true });
   var stars = new THREE.Points(geo, mat);
   scene.add(stars);
   return stars;
@@ -117,7 +121,7 @@ function createCharacter(xOffset, leanAngle) {
   // Body
   var bodyGeo = new THREE.SphereGeometry(0.8, 16, 16);
   bodyGeo.scale(1, 1.2, 0.9);
-  var bodyMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6, metalness: 0.05 });
+  var bodyMat = new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 30, specular: 0x444444 });
   var body = new THREE.Mesh(bodyGeo, bodyMat);
   body.position.y = -0.3;
   group.add(body);
@@ -130,7 +134,7 @@ function createCharacter(xOffset, leanAngle) {
 
   // Eyes
   var eyeGeo = new THREE.SphereGeometry(0.08, 8, 8);
-  var eyeMat = new THREE.MeshStandardMaterial({ color: 0x222222 });
+  var eyeMat = new THREE.MeshPhongMaterial({ color: 0x222222 });
   var eyeL = new THREE.Mesh(eyeGeo, eyeMat);
   eyeL.position.set(-0.18, 1.05, 0.45);
   group.add(eyeL);
@@ -140,7 +144,7 @@ function createCharacter(xOffset, leanAngle) {
 
   // Blush
   var blushGeo = new THREE.SphereGeometry(0.1, 8, 8);
-  var blushMat = new THREE.MeshStandardMaterial({ color: 0xffaaaa, transparent: true, opacity: 0.4 });
+  var blushMat = new THREE.MeshPhongMaterial({ color: 0xffaaaa, transparent: true, opacity: 0.5 });
   var blushL = new THREE.Mesh(blushGeo, blushMat);
   blushL.position.set(-0.35, 0.9, 0.4);
   blushL.scale.set(1, 0.6, 0.5);
