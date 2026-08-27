@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Galaxy Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <!-- INTRO UI -->
+  <div id="intro-ui">
+    <p id="intro-text">FIZ PARA VC,<br>QUE FAZ MEU UNIVERSO BRILHAR</p>
+    <button id="start-btn">START</button>
+  </div>
+
+  <!-- MUSIC CONTROL -->
+  <div id="music-ctrl">
+    <button id="music-toggle">&#9835;</button>
+    <input type="range" id="music-volume" min="0" max="100" value="60">
+  </div>
+
+  <!-- POEM MODAL -->
+  <div id="poem-modal">
+    <div id="poem-card">
+      <div id="poem-photo-wrap"><img id="poem-photo" src="" alt=""></div>
+      <h2 id="poem-title"></h2>
+      <p id="poem-body"></p>
+      <button id="poem-close">fechar</button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div id="loader">
+    <p>carregando universo...</p>
+    <div id="loader-bar-bg"><div id="loader-bar"></div></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
