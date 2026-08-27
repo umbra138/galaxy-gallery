@@ -433,26 +433,12 @@ window.addEventListener('resize', function() {
   IS_MOBILE = window.innerWidth < 700;
 });
 
-// ========== LOADER ==========
-var loaderEl = document.getElementById('loader');
-var loaderBar = document.getElementById('loader-bar');
-var loadProgress = 0;
-function updateLoader() {
-  loadProgress += (100 - loadProgress) * 0.05 + 0.2;
-  if (loadProgress > 98) loadProgress = 98;
-  loaderBar.style.width = loadProgress + '%';
-  if (loadProgress < 98) requestAnimationFrame(updateLoader);
-}
-updateLoader();
-setTimeout(function() {
-  loaderBar.style.width = '100%';
-  setTimeout(function() {
-    loaderEl.classList.add('hide');
-    state = 'intro';
-    introUI.classList.add('show');
-    musicCtrl.classList.add('show');
-  }, 800);
-}, 2000);
+// ========== LOADER CALLBACK ==========
+window._onLoaded = function() {
+  state = 'intro';
+  introUI.classList.add('show');
+  musicCtrl.classList.add('show');
+};
 
 // ========== ANIMATION ==========
 function animate() {
